@@ -3,6 +3,7 @@ name = "image-ocr-tool"
 version = "0.1.0"
 description = "A Image OCR Tool"
 authors = ["Karan <karan.khatke@gmail.com>"]
+package-mode = false
 
 [tool.poetry.dependencies]
 python = ">=3.10,<4"

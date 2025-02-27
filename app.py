@@ -6,12 +6,31 @@ from PIL import Image
 from pdf2image import convert_from_bytes
 import io
 import pillow_heif
+import os
+import platform
 
 # Register HEIF opener with Pillow
 pillow_heif.register_heif_opener()
 
-# Set Tesseract OCR Path (Windows users)
-pytesseract.pytesseract.tesseract_cmd = r"C:\Program Files\Tesseract-OCR\tesseract.exe"
+# Function to set Tesseract path dynamically
+def set_tesseract_path():
+    if platform.system() == "Windows":
+        # Windows path (adjust if needed)
+        return r"C:\Program Files\Tesseract-OCR\tesseract.exe"
+    elif platform.system() == "Linux":
+        # Default Linux path
+        return "/usr/bin/tesseract"
+    elif platform.system() == "Darwin":
+        # macOS path (if using Mac)
+        return "/opt/homebrew/bin/tesseract"
+    else:
+        raise EnvironmentError("Unsupported OS: Tesseract path must be set manually.")
+
+# Set the Tesseract path
+pytesseract.pytesseract.tesseract_cmd = set_tesseract_path()
+
+# Print Tesseract version for debugging
+print("Using Tesseract at:", pytesseract.pytesseract.tesseract_cmd)
 
 # Title of the Streamlit app
 st.title("📄 Image to Text Converter (OCR)")

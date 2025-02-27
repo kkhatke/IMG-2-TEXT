@@ -1,10 +1,13 @@
 #!/bin/bash
-# Install poetry if not already installed
-if ! command -v poetry &> /dev/null; then
-    echo "Installing Poetry..."
-    curl -sSL https://install.python-poetry.org | python3 -
-    export PATH="$HOME/.local/bin:$PATH"
-fi
+# Ensure pip is up to date
+pip install --upgrade pip
 
-# Install dependencies using Poetry
+# Install poetry using pip
+pip install poetry
+
+# Ensure poetry is in the system path
+export PATH="$HOME/.local/bin:$PATH"
+
+# Install dependencies using poetry
 poetry install --no-root
+

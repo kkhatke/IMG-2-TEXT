@@ -1,0 +1,18 @@
+[tool.poetry]
+name = "image-ocr-tool"
+version = "0.1.0"
+description = "A Image OCR Tool"
+authors = ["Karan <karan.khatke@gmail.com>"]
+
+[tool.poetry.dependencies]
+python = ">=3.10,<4"
+streamlit = ">=1.41"
+pillow = "^11.1.0"
+pytesseract = "^0.3.13"
+pdf2image = "^1.17.0"
+numpy = "^2.2.3"
+opencv-python = "^4.11.0.86"
+
+[build-system]
+requires = ["poetry-core"]
+build-backend = "poetry.core.masonry.api"
